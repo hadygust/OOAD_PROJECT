@@ -1,5 +1,7 @@
 package view.scene.application.form;
 
+import controller.service.observer.Data;
+import controller.service.observer.Observer;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -13,7 +15,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import main.Conf;
 
-public class ManagePCFormTemp extends VBox implements FormComponent{
+public class ManagePCFormTemp extends FormComponent{
 
 	private FlowPane buttonFP;
 
@@ -103,6 +105,30 @@ public class ManagePCFormTemp extends VBox implements FormComponent{
 
 	@Override
 	public void setHandler() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(Data data) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addObserver(Observer obs) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeObserver(Observer obs) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void notifyObserver() {
 		// TODO Auto-generated method stub
 		
 	}

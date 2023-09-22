@@ -27,12 +27,15 @@ import main.Conf;
 import main.Main;
 import model.PC;
 import view.Component;
+import view.scene.application.form.BookPCForm;
+import view.scene.application.form.FormComponent;
 import view.scene.application.form.ManagePCForm;
 
 public class HomeScene implements Component, Observer{
 	
 	private PCController pcCon = PCController.getInstance();
 	private AppMenuFactory menuFactory = AppMenuFactory.createMenuFactory();
+	private String role = Main.user.getRole();
 	
 	private ArrayList<PC> pcList;
 	
@@ -45,7 +48,7 @@ public class HomeScene implements Component, Observer{
 	
 	private VBox mainContent;
 	
-	private ManagePCForm sideMenu;
+	private HomeFormContainer sideMenu;
 	
 	@Override
 	public void init() {
@@ -58,8 +61,19 @@ public class HomeScene implements Component, Observer{
 		
 		mainContent = new VBox();
 		
-		sideMenu = new ManagePCForm();
-		sideMenu.addObserver(this);
+		sideMenu = new HomeFormContainer();
+		
+		if(role.equalsIgnoreCase("Admin")) {
+			FormComponent manageForm = new ManagePCForm();
+			manageForm.addObserver(this);
+			sideMenu.addForm(manageForm);
+		} else if (role.equalsIgnoreCase("Customer")) {
+			FormComponent bookPcForm = new BookPCForm();
+			bookPcForm.addObserver(this);
+			sideMenu.addForm(bookPcForm);
+		}
+		
+//		sideMenu.addObserver(this);
 		
 		buttonFP = new FlowPane();
 		
@@ -77,9 +91,9 @@ public class HomeScene implements Component, Observer{
 		bp.setTop(menuBar);
 		
 		// ONLY ADMIN CAN ACCESS
-		if(Main.user.getRole().toLowerCase().equals("admin")) {
+//		if(role.equalsIgnoreCase("admin")) {
 			bp.setRight(sideMenu);			
-		}
+//		}
 	}
 	
 	public void refreshPC() {
@@ -95,7 +109,9 @@ public class HomeScene implements Component, Observer{
 		for (PC pc : pcList) {
 			
 			PCItem pcItem = new PCItem(pc);
-			pcItem.addObserver(sideMenu);
+			for (FormComponent form : sideMenu.getFormList()) {
+				pcItem.addObserver(form);
+			}
 			fp.getChildren().add(pcItem);
 		}
 	}

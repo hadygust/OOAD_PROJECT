@@ -15,16 +15,14 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.util.Pair;
 import main.Conf;
 import model.PC;
-import view.Component;
 
-public class ManagePCForm extends VBox implements Observer, Component, Subject{
+public class ManagePCForm extends FormComponent {
 	private PCController pcCon = PCController.getInstance();
 	private AlertService alert = AlertService.getInstance();
 	private ArrayList<Observer> obsList = new ArrayList<>();
@@ -87,8 +85,6 @@ public class ManagePCForm extends VBox implements Observer, Component, Subject{
 	public void style() {
 		// TODO Auto-generated method stub
 		setPrefWidth(Conf.SIDE_MENU_WIDTH);
-		setStyle("-fx-border-width: 0 0 0 1px; "
-				+ "-fx-border-color: lightgray;");
 		
 		setAlignment(Pos.CENTER);
 		setSpacing(52);
@@ -121,9 +117,6 @@ public class ManagePCForm extends VBox implements Observer, Component, Subject{
 		// TODO Auto-generated method stub
 		
 		addPcButton.setOnMouseClicked(x -> {
-			
-			
-			
 			Pair<Boolean, String> reply = pcCon.addNewPC(idTF.getText());
 			
 			if(reply.getKey()) {
@@ -136,7 +129,10 @@ public class ManagePCForm extends VBox implements Observer, Component, Subject{
 		
 		deletePcButton.setOnMouseClicked(x -> {
 			Pair<Boolean, String> reply = pcCon.deletePC(pc);
-			
+			System.out.println("Click del");
+			for (Observer observer : obsList) {
+				System.out.println(observer);
+			}
 			if(reply.getKey()) {
 				notifyObserver();	
 				reset();
