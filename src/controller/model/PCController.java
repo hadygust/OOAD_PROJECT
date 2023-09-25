@@ -42,6 +42,28 @@ public class PCController {
 		
 		return pcList;
 	}
+	
+	public ArrayList<PC> getAllPCWithStatus() {
+		ArrayList<PC> pcList = new ArrayList<>();
+		
+		String q = "SELECT pc.pc_id, pc_condition, :D FROM pc JOIN ";//TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		
+		ResultSet rs = con.executeQuery(q);
+		
+		try {
+			while(rs.next()) {
+				int id = rs.getInt("pc_id");
+				String condition = rs.getString("pc_condition");
+				
+				pcList.add(new PC(id, condition));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return pcList;
+	}
 
 	public Pair<Boolean, String> deletePC(PC pc) {
 		//TODO VAILDATE IF PC IS BOOKED

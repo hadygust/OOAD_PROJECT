@@ -39,6 +39,8 @@ public class Main extends Application{
 		if(authStage != null && authStage.isShowing()) {
 			authStage.close();
 		}
+		appStage.setFullScreen(true);
+		appStage.setResizable(false);
 		appStage.show();
 	}
 	

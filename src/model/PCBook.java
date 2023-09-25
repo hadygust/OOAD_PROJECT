@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class PCBook {
@@ -7,7 +8,7 @@ public class PCBook {
 	private int id;
 	private int userId;
 	private int pcId;
-	private Date bookDate;
+	private LocalDate bookDate;
 	
 	public int getId() {
 		return id;
@@ -33,15 +34,15 @@ public class PCBook {
 		this.pcId = pcId;
 	}
 
-	public Date getBookDate() {
+	public LocalDate getBookDate() {
 		return bookDate;
 	}
 
-	public void setBookDate(Date bookDate) {
+	public void setBookDate(LocalDate bookDate) {
 		this.bookDate = bookDate;
 	}
 
-	public PCBook(int id, int userId, int pcId, Date bookDate) {
+	public PCBook(int id, int userId, int pcId, LocalDate bookDate) {
 		super();
 		this.id = id;
 		this.userId = userId;

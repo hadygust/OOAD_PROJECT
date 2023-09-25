@@ -11,7 +11,6 @@ import controller.service.observer.Observer;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
@@ -23,8 +22,8 @@ import javafx.util.Pair;
 import main.Conf;
 import model.PC;
 
-public class BookPCForm extends FormComponent{
-
+public class ReportPCForm extends FormComponent{
+	
 	private PCController pcCon = PCController.getInstance();
 	private PCBookController bookCon = PCBookController.getInstance();
 	private AlertService alert = AlertService.getInstance();
@@ -118,38 +117,7 @@ public class BookPCForm extends FormComponent{
 			}
 		});
 	}
-	
-	public void reset() {
 
-		pc = null;
-		
-		dateDP.setValue(null);
-		
-		formTitle.setText("Book PC");
-		idTF.setText("");
-		
-		bookButton.setDisable(true);
-		
-	}
-	
-	public BookPCForm() {
-		 init();
-		 placeItems();
-		 style();
-		 setHandler();
-	}
-
-	@Override
-	public void update(Data data) {
-		reset();
-		pc = (PC) data;
-		
-		formTitle.setText("Book PC " + pc.getId());
-		idTF.setText(bookCon.getLastId() + "");
-		pcIdTF.setText(pc.getId() + "");;
-		bookButton.setDisable(false);
-	}
-	
 	@Override
 	public void addObserver(Observer obs) {
 		obsList.add(obs);
@@ -165,6 +133,16 @@ public class BookPCForm extends FormComponent{
 		for (Observer observer : obsList) {
 			observer.update(pc);
 		}
+	}
+
+	@Override
+	public void update(Data data) {
+		pc = (PC) data;
+		
+		formTitle.setText("Book PC " + pc.getId());
+		idTF.setText(bookCon.getLastId() + "");
+		pcIdTF.setText(pc.getId() + "");;
+		bookButton.setDisable(false);
 	}
 
 }
