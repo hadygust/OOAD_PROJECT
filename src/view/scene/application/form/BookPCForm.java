@@ -22,6 +22,7 @@ import javafx.scene.text.Text;
 import javafx.util.Pair;
 import main.Conf;
 import model.PC;
+import view.scene.application.home.HomeFormContainer;
 
 public class BookPCForm extends FormComponent{
 
@@ -127,21 +128,23 @@ public class BookPCForm extends FormComponent{
 		
 		formTitle.setText("Book PC");
 		idTF.setText("");
+		pcIdTF.setText("");
 		
 		bookButton.setDisable(true);
 		
 	}
 	
-	public BookPCForm() {
-		 init();
-		 placeItems();
-		 style();
-		 setHandler();
+	public BookPCForm(HomeFormContainer container) {
+		super(container);
+		init();
+		placeItems();
+		style();
+		setHandler();
 	}
 
 	@Override
 	public void update(Data data) {
-		reset();
+		container.resetForm();
 		pc = (PC) data;
 		
 		formTitle.setText("Book PC " + pc.getId());

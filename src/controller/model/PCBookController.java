@@ -48,7 +48,9 @@ public class PCBookController {
 		
 		String message = "";
 		
-		if(!pc.getCondition().equalsIgnoreCase("Usable")) {
+		if(pc == null){
+			message = "Please select a PC first!";
+		} else if (!pc.getCondition().equalsIgnoreCase("Usable")) {
 			message = "PC is currently not available! Please select another PC!";
 		} else if (pcIsBooked(pc)) { 
 			message = "PC is booked! Please select another PC!";

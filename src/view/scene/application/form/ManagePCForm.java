@@ -21,6 +21,7 @@ import javafx.scene.text.Text;
 import javafx.util.Pair;
 import main.Conf;
 import model.PC;
+import view.scene.application.home.HomeFormContainer;
 
 public class ManagePCForm extends FormComponent {
 	private PCController pcCon = PCController.getInstance();
@@ -121,7 +122,7 @@ public class ManagePCForm extends FormComponent {
 			
 			if(reply.getKey()) {
 				notifyObserver();
-				reset();
+				container.resetForm();
 			} else {
 				alert.errorAlert("Add PC Failed!", reply.getValue());
 			}
@@ -135,7 +136,7 @@ public class ManagePCForm extends FormComponent {
 			}
 			if(reply.getKey()) {
 				notifyObserver();	
-				reset();
+				container.resetForm();
 			} else {
 				alert.errorAlert("Delete Failed!", reply.getValue());
 			}
@@ -148,7 +149,7 @@ public class ManagePCForm extends FormComponent {
 		});
 		
 		clearButton.setOnMouseClicked(x -> {
-			reset();
+			container.resetForm();
 		});
 		
 	}
@@ -170,7 +171,8 @@ public class ManagePCForm extends FormComponent {
 		
 	}
 	
-	public ManagePCForm() {
+	public ManagePCForm(HomeFormContainer container) {
+		super(container);
 		init();
 		placeItems();
 		style();

@@ -39,6 +39,7 @@ public class HomeFormContainer extends VBox implements Component{
 		setPrefWidth(Conf.SIDE_MENU_WIDTH);
 		setStyle("-fx-border-width: 0 0 0 1px; "
 				+ "-fx-border-color: lightgray;");
+		setSpacing(30);
 	}
 
 	@Override
@@ -49,6 +50,7 @@ public class HomeFormContainer extends VBox implements Component{
 	
 	public void addForm(FormComponent form) {
 		formList.add(form);
+		System.out.println(formList);
 		placeItems();
 	}
 	
@@ -56,4 +58,9 @@ public class HomeFormContainer extends VBox implements Component{
 		return this.formList;
 	}
 
+	public void resetForm() {
+		for (FormComponent form : formList) {
+			form.reset();
+		}
+	}
 }

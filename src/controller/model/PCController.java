@@ -43,27 +43,27 @@ public class PCController {
 		return pcList;
 	}
 	
-	public ArrayList<PC> getAllPCWithStatus() {
-		ArrayList<PC> pcList = new ArrayList<>();
-		
-		String q = "SELECT pc.pc_id, pc_condition, :D FROM pc JOIN ";//TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		
-		ResultSet rs = con.executeQuery(q);
-		
-		try {
-			while(rs.next()) {
-				int id = rs.getInt("pc_id");
-				String condition = rs.getString("pc_condition");
-				
-				pcList.add(new PC(id, condition));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return pcList;
-	}
+//	public ArrayList<PC> getAllPCWithStatus() {
+//		ArrayList<PC> pcList = new ArrayList<>();
+//		
+//		String q = "SELECT pc.pc_id, pc_condition, :D FROM pc JOIN ";//TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//		
+//		ResultSet rs = con.executeQuery(q);
+//		
+//		try {
+//			while(rs.next()) {
+//				int id = rs.getInt("pc_id");
+//				String condition = rs.getString("pc_condition");
+//				
+//				pcList.add(new PC(id, condition));
+//			}
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		return pcList;
+//	}
 
 	public Pair<Boolean, String> deletePC(PC pc) {
 		//TODO VAILDATE IF PC IS BOOKED
@@ -138,7 +138,7 @@ public class PCController {
 			return new Pair<Boolean, String>(false, message);
 		}
 
-		if (!validateDuplicate(id)) {
+		if (isExist(id)) {
 			message = "PC Already Exist!";
 			return new Pair<Boolean, String>(false, message);
 		}
@@ -160,7 +160,7 @@ public class PCController {
 		return new Pair<Boolean, String>(true, message);
 	}
 	
-	public boolean validateDuplicate(int id) {
+	public boolean isExist(int id) {
 		String q = "SELECT * FROM pc WHERE pc_id = ?";
 		
 		PreparedStatement ps = con.prepareStatement(q);
@@ -171,9 +171,9 @@ public class PCController {
 			ResultSet rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				return false;
-			} else {
 				return true;
+			} else {
+				return false;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

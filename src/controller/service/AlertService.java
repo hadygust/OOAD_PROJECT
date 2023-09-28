@@ -16,7 +16,15 @@ public class AlertService {
 	}
 	
 	private void setOwner(Window window) {
-		alert.initOwner(window);
+		// Cannot set owner once stage has been set visible
+//		if (window == null) {
+//			alert.initOwner(window);
+//		} else {
+//			if (!window.isShowing()) {
+//				alert.initOwner(window);
+//			}
+//		}
+		
 	}
 	
 	public static synchronized AlertService getInstance() {

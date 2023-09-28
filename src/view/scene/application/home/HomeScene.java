@@ -3,9 +3,9 @@ package view.scene.application.home;
 import java.util.ArrayList;
 
 import controller.model.PCController;
+import controller.service.factory.AppMenuFactory;
 import controller.service.observer.Data;
 import controller.service.observer.Observer;
-import controller.service.patterns.AppMenuFactory;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -30,6 +30,7 @@ import view.Component;
 import view.scene.application.form.BookPCForm;
 import view.scene.application.form.FormComponent;
 import view.scene.application.form.ManagePCForm;
+import view.scene.application.form.ReportPCForm;
 
 public class HomeScene implements Component, Observer{
 	
@@ -64,13 +65,17 @@ public class HomeScene implements Component, Observer{
 		sideMenu = new HomeFormContainer();
 		
 		if(role.equalsIgnoreCase("Admin")) {
-			FormComponent manageForm = new ManagePCForm();
+			FormComponent manageForm = new ManagePCForm(this.sideMenu);
 			manageForm.addObserver(this);
 			sideMenu.addForm(manageForm);
 		} else if (role.equalsIgnoreCase("Customer")) {
-			FormComponent bookPcForm = new BookPCForm();
+			FormComponent bookPcForm = new BookPCForm(this.sideMenu);
 			bookPcForm.addObserver(this);
 			sideMenu.addForm(bookPcForm);
+			
+			FormComponent reportPCForm = new ReportPCForm(this.sideMenu);
+			reportPCForm.addObserver(this);
+			sideMenu.addForm(reportPCForm);
 		}
 		
 //		sideMenu.addObserver(this);

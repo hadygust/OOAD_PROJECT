@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Report {
@@ -8,9 +9,9 @@ public class Report {
 	private int userId;
 	private int pcId;
 	private String note;
-	private LocalDateTime date;
+	private LocalDate date;
 	
-	public Report(int id, int userId, int pcId, String note, LocalDateTime date) {
+	public Report(int id, int userId, int pcId, String note, LocalDate date) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -51,11 +52,11 @@ public class Report {
 		this.note = note;
 	}
 
-	public LocalDateTime getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDateTime date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 	

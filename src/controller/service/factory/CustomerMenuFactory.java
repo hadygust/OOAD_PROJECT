@@ -1,4 +1,4 @@
-package controller.service.patterns;
+package controller.service.factory;
 
 import model.object.menus.AppMenu;
 import model.object.menus.CustomerMenu;

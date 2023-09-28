@@ -6,4 +6,6 @@ public interface Component {
 	public void placeItems();
 	public void style();
 	public void setHandler();
+	
+	
 }
