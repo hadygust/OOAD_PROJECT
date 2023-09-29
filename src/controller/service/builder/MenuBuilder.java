@@ -18,6 +18,7 @@ public class MenuBuilder {
 	}
 	
 	public MenuBuilder addAll(MenuItem... items ) {
+		this.menu.getItems().clear();
 		this.menu.getItems().addAll(items);
 		return this;
 	}

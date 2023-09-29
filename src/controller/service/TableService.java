@@ -4,19 +4,18 @@ import java.time.LocalDate;
 
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
-import model.TransactionDetail;
 
-public class TableService {
+public class TableService <T>{
 	
-	public static void setIntValue(TableColumn<TransactionDetail, Integer> col, String name) {
+	public static void setIntValue(TableColumn<?, Integer> col, String name) {
 		col.setCellValueFactory(new PropertyValueFactory<>(name));
 	}
 	
-	public static void setDateValue(TableColumn<TransactionDetail, LocalDate> col, String name) {
+	public static void setDateValue(TableColumn<?, LocalDate> col, String name) {
 		col.setCellValueFactory(new PropertyValueFactory<>(name));
 	}
 	
-	public static void setStringValue(TableColumn<TransactionDetail, String> col, String name) {
+	public static void setStringValue(TableColumn<?, String> col, String name) {
 		col.setCellValueFactory(new PropertyValueFactory<>(name));
 	}
 

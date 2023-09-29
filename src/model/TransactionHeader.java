@@ -1,13 +1,15 @@
 package model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
-public class TransactionHeader {
+import controller.service.observer.Data;
+
+public class TransactionHeader implements Data{
 	private int id;
 	private int userId;
-	private LocalDateTime transactionDate;
+	private LocalDate transactionDate;
 	
-	public TransactionHeader(int id, int userId, LocalDateTime transactionDate) {
+	public TransactionHeader(int id, int userId, LocalDate transactionDate) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -30,11 +32,11 @@ public class TransactionHeader {
 		this.userId = userId;
 	}
 
-	public LocalDateTime getTransactionDate() {
+	public LocalDate getTransactionDate() {
 		return transactionDate;
 	}
 
-	public void setTransactionDate(LocalDateTime transactionDate) {
+	public void setTransactionDate(LocalDate transactionDate) {
 		this.transactionDate = transactionDate;
 	}
 	
