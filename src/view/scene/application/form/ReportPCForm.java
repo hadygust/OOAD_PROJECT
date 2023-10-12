@@ -108,6 +108,7 @@ public class ReportPCForm extends FormComponent{
 		noteTxt.setTextOrigin(VPos.TOP);
 		
 		pcIdTF.setPrefWidth(Conf.SIDE_MENU_FORM_WIDTH);
+		noteTA.setPrefWidth(Conf.SIDE_MENU_FORM_WIDTH);
 		
 		reportButton.setFont(Font.font("Calibri", FontWeight.SEMI_BOLD, 16));
 		

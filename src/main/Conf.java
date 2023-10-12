@@ -16,7 +16,7 @@ public class Conf {
 	public static final int SIDE_MENU_WIDTH = 464;
 	public static final int SIDE_MENU_HEIGHT = 960;
 	
-	public static final int SIDE_MENU_FORM_WIDTH = 200;
+	public static final int SIDE_MENU_FORM_WIDTH = 240;
 	
 	public static final double DEFAULT_PADDING = 24;
 	

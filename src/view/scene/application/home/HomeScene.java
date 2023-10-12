@@ -96,9 +96,9 @@ public class HomeScene implements Component, Observer{
 		bp.setTop(menuBar);
 		
 		// ONLY ADMIN CAN ACCESS
-//		if(role.equalsIgnoreCase("admin")) {
+		if(role.equalsIgnoreCase("admin") || role.equalsIgnoreCase("customer")) {
 			bp.setRight(sideMenu);			
-//		}
+		}
 	}
 	
 	public void refreshPC() {

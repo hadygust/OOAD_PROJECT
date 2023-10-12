@@ -1,6 +1,7 @@
 package view.stage;
 
 import javafx.stage.Stage;
+import view.scene.application.JobScene.JobScene;
 import view.scene.application.home.HomeScene;
 import view.scene.application.transaction_history.TransactionHistoryScene;
 
@@ -8,6 +9,7 @@ public class ApplicationStage extends Stage{
 	
 	private HomeScene homeScene = null;
 	private TransactionHistoryScene transactionHistoryScene = null;
+	private JobScene jobScene = null;
 	
 	
 	public ApplicationStage() {
@@ -35,6 +37,15 @@ public class ApplicationStage extends Stage{
 		
 		
 		setScene(transactionHistoryScene.getScene());
+//		setScene(new TransactionHistoryScene().getScene());
+	}
+	
+	public void showJob() {
+		if(jobScene == null) {
+			jobScene = new JobScene();
+		}
+		
+		setScene(jobScene.getScene());
 	}
 	
 }

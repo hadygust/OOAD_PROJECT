@@ -1,5 +1,7 @@
 package model;
 
+import javafx.scene.control.Button;
+
 public class Job {
 	
 	private int id;
@@ -47,6 +49,14 @@ public class Job {
 		this.status = status;
 	}
 	
-	
+//	public Button getCompleteButton() {
+//		Button completeButton = new Button("Complete Job");
+//		
+//		completeButton.setOnAction(x -> {
+//			
+//		});
+//		
+//		return completeButton;
+//	}
 
 }

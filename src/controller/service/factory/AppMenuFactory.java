@@ -14,6 +14,8 @@ public interface AppMenuFactory {
 				return new CustomerMenuFactory();
 			case "admin":
 				return new AdminMenuFactory();
+			case "technician":
+				return new TechnicianMenuFactory();
 			default: 
 				return new CustomerMenuFactory();
 		}
