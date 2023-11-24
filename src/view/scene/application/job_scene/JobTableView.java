@@ -1,4 +1,4 @@
-package view.scene.application.JobScene;
+package view.scene.application.job_scene;
 
 import java.time.LocalDate;
 
